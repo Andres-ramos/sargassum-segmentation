@@ -1,61 +1,21 @@
 # sargassum-segmentation
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+In this project we test the performance of a pretrained segmentation model in the task of nearshore sargassum semantic segmentation. The project cosists of two parts:
 
-An example
+1. A segmentation dataset creation pipeline - This code can be found in the src/make_dataset.py file. It uses sargassum annotations obtained manually. It leverages guaraguao (https://github.com/Andres-ramos/guaraguao), a package I developed a while back to abstract the management and download of satellite images. This package is used to download the satellite images that are used for the project. 
 
-## Project Organization
+2. A jupyter notebook that evaluates the performance of a pretrained segmentation model using the created dataset - This code can be found in the notebooks/segmentation.ipynb file
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         sargassum_segmentation and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── sargassum_segmentation   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes sargassum_segmentation a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
-```
+In order to run the jupyter notebook create an environment with python 3.11 using the following commands:
 
---------
+`python -m venv venv`
 
+`source venv/bin/activate`
+
+`pip install -r requirements.py`
+
+In order to run the notebook locally, download the data from this link (https://drive.google.com/file/d/1XVcvz51BkV20pSZCRN5aqjOwvb7Jq_Z0/view?usp=share_link) and past the folder in the /sargassum-segmentation folder, parallel to src/ and notebooks/. 
+
+Although it is recommended you donwload the data to run the notebook, if you wish to run the dataset creation pipeline more set up is required. The dataset creation pipeline relies on guaraguao and this package is not very user friendly and has not been maintained. The reccomended way of installing guaraguao is to `git clone https://github.com/Andres-ramos/guaraguao` the packge into a sibling directory, `cd guaraguao/` into the package and run `pip install . `
+
+This is not the only step required as you now need to create a google cloud token to be able to use the package. The instructions are in the project github. 
