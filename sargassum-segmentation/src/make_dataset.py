@@ -17,9 +17,8 @@ from src.utils import crop_to_minimum
 
 def main(annotation_path: str) -> None:
     """
+    Converts annotations in data/raw folder into tif and segmentation masks
     """
-    
-
     cache_name="cache"
     cache_path = Path(f"data/external/{cache_name}")
     sentinel_client = Sentinel2(cache_path, collection="S2_HARMONIZED")
