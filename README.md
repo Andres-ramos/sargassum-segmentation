@@ -1,5 +1,4 @@
 # sargassum-segmentation
-# sargassum-segmentation
 
 In this project we test the performance of a pretrained segmentation model in the task of nearshore sargassum semantic segmentation. The project cosists of two parts:
 
